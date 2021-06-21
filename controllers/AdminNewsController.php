@@ -30,9 +30,10 @@ class AdminNewsController extends AdminBase {
 
       if ($errors == false) {
         $news = News::create($options);
-        $usersList = Subscriber::sendAll($options);
+        $usersList = Subscriber::sendAll($options, $news);
         if ($news) {
           header("Location: /admin/news");
+
         }
       }
     }

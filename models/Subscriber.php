@@ -25,7 +25,7 @@ class Subscriber {
     return 0;
 
   }
-  public static function sendAll($options)
+  public static function sendAll($options, $newsIndex)
   {
     $db = Db::getConnection();
 
@@ -34,21 +34,25 @@ class Subscriber {
 
     // Используется подготовленный запрос
     $result = $db->prepare($sql);
+    // $result->bindParam(':id', $id, PDO::PARAM_INT);
 
     // Указываем, что хотим получить данные в виде массива
     $result->setFetchMode(PDO::FETCH_ASSOC);
+    
 
     // Выполняем запрос
     $result->execute();
 
     // Возвращаем данные
     $result->fetchAll();
-
+    var_dump($result);
     foreach ($result as $subscriber) 
     {
-        $message = "Текст: {$userText}. От {$userEmail}";
-        $subject = 'Тема письма';
-        $result = mail($subscriber['email'], $subject, $message);  
+        $message = "Новая новость от big DUCK kitchen: http://diplom/news/{$newsIndex}";
+        $subject = 'Новая новость';
+        $emailResult = mail($subscriber['email'], $subject, $message); 
+        var_dump($emailResult);
+
     }
   }    
 }

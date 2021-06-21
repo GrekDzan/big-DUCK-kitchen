@@ -11,8 +11,21 @@ session_start();
 
 // Подключение файлов системы
 define('ROOT', dirname(__FILE__));
-require_once(ROOT.'/components/Autoload.php');
+// require_once(ROOT.'/components/Autoload.php');
+$array_paths = array('models', 'components', 'controllers');
 
+foreach ($array_paths as $path) {
+    $file_names = scandir($path);
+    foreach($file_names as $key => $file) {
+        if (!($file == "." || $file == "..")) {
+            // $path = ROOT . '/' . $path . '/' . $file;
+            $pathToClass = ROOT . '/' . $path . '/' . $file;
+            if (is_file($pathToClass)) {
+                include_once $pathToClass;
+            }
+        }
+    }
+}
 
 // Вызов Router
 $router = new Router();

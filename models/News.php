@@ -11,13 +11,12 @@ class News {
             . '(title, subject, pub_date)'
             . 'VALUES '
             . '(:title, :subject, :pub_date)';
-
-    // Получение и возврат результатов. Используется подготовленный запрос
-    $result = $db->prepare($sql);
-    $result->bindParam(':title', $options['title'], PDO::PARAM_STR);
-    $result->bindParam(':subject', $options['subject'], PDO::PARAM_STR);
-    $result->bindParam(':pub_date', $options['pub_date'], PDO::PARAM_STR);
-
+            // Получение и возврат результатов. Используется подготовленный запрос
+            $result = $db->prepare($sql);
+            $result->bindParam(':title', $options['title'], PDO::PARAM_STR);
+            $result->bindParam(':subject', $options['subject'], PDO::PARAM_STR);
+            $result->bindParam(':pub_date', $options['pub_date'], PDO::PARAM_STR);
+        
 
     if ($result->execute()) {
         // Если запрос выполенен успешно, возвращаем id добавленной записи

@@ -1,6 +1,8 @@
 /* lg */ 
-@media (min-width: 1200px) {
-
+@media screen and (max-width: 768px) {
+	.productinfo img{
+		width: 400px !important;
+	}
 }
 
 /* md */
