@@ -45,13 +45,11 @@ class Subscriber {
 
     // Возвращаем данные
     $result->fetchAll();
-    var_dump($result);
     foreach ($result as $subscriber) 
     {
         $message = "Новая новость от big DUCK kitchen: http://diplom/news/{$newsIndex}";
         $subject = 'Новая новость';
         $emailResult = mail($subscriber['email'], $subject, $message); 
-        var_dump($emailResult);
 
     }
   }    

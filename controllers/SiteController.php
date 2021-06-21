@@ -21,13 +21,6 @@ class SiteController
         $sliderProducts = Product::getRecommendedProducts();
 
         // Подключаем вид
-        if (isset($_POST['submit'])) {
-                // if(isset($_POST['sub'])){
-                    Subscriber::create($_POST);
-                    
-                    // }
-                } 
-                var_dump($_POST);
         require_once(ROOT . '/views/site/index.php');
         return true;
         
