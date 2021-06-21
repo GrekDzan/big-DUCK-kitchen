@@ -6,11 +6,7 @@
         <div class="container">
             <div class="row">
                 <p class="pull-left">big DUCK kitchen © 2021</p>
-                <form>
-                    <input type="text" name="email" placeholder="EMAIL">
-                    <input type="submit" name="submit" class="btn btn-default" value="ПОДПИСАТЬСЯ" />
-                </form>
-                <p class="pull-right">Кухни с душей!</p>
+                <p class="pull-right">Кухни с душой!</p>
             </div>
         </div>
     </div>
