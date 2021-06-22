@@ -12,9 +12,8 @@ session_start();
 // Подключение файлов системы
 define('ROOT', dirname(__FILE__));
 // require_once(ROOT.'/components/Autoload.php');
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 require_once (ROOT. '/vendor/autoload.php');
+use PHPMailer\PHPMailer\PHPMailer;
 $array_paths = array('models', 'components', 'controllers');
 
 foreach ($array_paths as $path) {
@@ -33,3 +32,9 @@ foreach ($array_paths as $path) {
 // Вызов Router
 $router = new Router();
 $router->run();
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
 /**
  * Контроллер CartController
  */
@@ -31,6 +32,7 @@ class SiteController
      */
     public function actionContact()
     {
+        require_once (ROOT. '/config/smtp.params.php');
 
         // Переменные для формы
         $userEmail = false;
@@ -55,11 +57,23 @@ class SiteController
             if ($errors == false) {
                 // Если ошибок нет
                 // Отправляем письмо администратору 
-                $adminEmail = 'grekdzan@gmail.com';
-                $message = "Текст: {$userText}. От {$userEmail}";
-                $subject = 'Тема письма';
-                $result = mail($adminEmail, $subject, $message);
-                $result = true;
+                $phpmailer = new PHPMailer();
+                $phpmailer -> CharSet = "UTF-8";
+                $phpmailer->isSMTP();
+                $phpmailer->Host = $smtp_params['host'];
+                $phpmailer->SMTPAuth = $smtp_params['smtp_auth'];
+                $phpmailer->Port = $smtp_params['port'];
+                $phpmailer->Username = $smtp_params['user_name'];
+                $phpmailer->Password = $smtp_params['password'];
+
+                $phpmailer->setFrom($userEmail, 'user');
+                $phpmailer->addAddress($smtp_params['user_name'], 'big DUCK admin');
+                $phpmailer->Subject = 'Тема письма';
+                $phpmailer->Body = "Текст: {$userText}. От {$userEmail}";
+
+                $phpmailer->send();
+                $result = $phpmailer;
+                
             }
         }
 
