@@ -2571,3 +2571,6 @@ h2.title {
  max-width: 100%;
  max-height: 300px;
 }
+.cycle-carousel-wrap {
+    white-space: normal !important;
+ }
