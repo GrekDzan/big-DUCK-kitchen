@@ -71,7 +71,7 @@
                                             <img src="<?php echo Product::getImage($sliderItem['id']); ?>" alt="" />
                                             <h2><?php echo $sliderItem['price']; ?> руб</h2>
                                             <a href="/product/<?php echo $sliderItem['id']; ?>">
-                                                <?php echo $product['name']; ?>
+                                                <?php echo $sliderItem['name']; ?>
                                             </a>
                                             <br/><br/>
                                             <a href="#" class="btn btn-default add-to-cart" data-id="<?php echo $sliderItem['id']; ?>"><i class="fa fa-shopping-cart"></i>В корзину</a>
